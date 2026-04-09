@@ -1,0 +1,23 @@
+# Extração e API
+requests
+gdown
+mwclient
+
+# Manipulação de Dados
+pandas
+numpy
+
+# Modelagem e Validação
+pydantic
+
+# Configuração e Utilitários
+pyyaml
+python-dotenv
+
+# Visualização (Sprint Futura)
+streamlit
+plotly
+
+# Desenvolvimento e Testes
+pytest
+black
