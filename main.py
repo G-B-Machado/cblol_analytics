@@ -4,6 +4,7 @@ from src.ingestion.oracles_elixir import OraclesElixirIngestor
 from src.ingestion.leaguepedia import LeaguepediaIngestor
 from src.processing.data_processor import DataProcessor
 from src.processing.joiner import DataJoiner
+from src.analytics.draft_engine import DraftAnalyzer
 
 YEAR = 2026
 SPLIT = "Split 1"
@@ -37,6 +38,21 @@ def main():
         gold_df = joiner.join_sources(silver_df, lp_df)
         joiner.save_gold_data(gold_df, f"cblol_{YEAR}_{SPLIT}_gold.csv")
         print("[!] Sucesso: Camada Gold gerada.")
+
+    # 4. ANALYTICS
+    analyzer = DraftAnalyzer()
+    print("\n" + "="*30)
+    print("📊 RELATÓRIO DE ANALYTICS - CBLOL 2026")
+    print("="*30)
+
+    # Estatística de Side
+    side_winrate = analyzer.get_winrate_by_side(gold_df)
+    print(f"\n[Side Winrate]\n{side_winrate}")
+
+    # Top Presence (Picks + Bans)
+    presence = analyzer.get_champion_presence(gold_df)
+    print("\n[Top 5 Prioridades do Meta (P/B)]")
+    print(presence[['presence', 'win_rate', 'games_played', 'times_banned']].head(5))
 
 if __name__ == "__main__":
     main()
