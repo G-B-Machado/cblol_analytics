@@ -15,7 +15,9 @@ class DataProcessor:
         
         essential_cols = [
             'gameid', 'league', 'year', 'split', 'date', 'patch', 'side', 
-            'position', 'playername', 'teamname', 'champion', 'result'
+            'position', 'playername', 'teamname', 'champion', 'result','gamelength', 
+            'firstblood', 'firstinhibitor', 'teamkills', 'teamdeaths'
+
         ]
         
         cols_to_keep = [c for c in essential_cols if c in df.columns]
