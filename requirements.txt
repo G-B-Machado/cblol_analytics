@@ -21,6 +21,7 @@ python-dotenv
 # Visualização (Sprint Futura)
 streamlit
 plotly
+matplotlib
 
 # Desenvolvimento e Testes
 pytest
